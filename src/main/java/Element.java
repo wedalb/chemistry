@@ -1,4 +1,4 @@
-package src;
+
 
 /***
  * Atom = Protonen, Elektronen, Neutronen, (Pro = +, Elek = -)
@@ -14,7 +14,7 @@ public class Element {
     /**
      * Wichtige Einheiten
      */
-    public final double e = 1.602*10^(-19);// Elementarladung für protonen positiv und elektronen negativ
+    public final double e = 1.602*(double)(10^(-19));// Elementarladung für protonen positiv und elektronen negativ
 
     /**
      * Informationen aus dem Periodensystem die unveränderbar sind
@@ -28,7 +28,7 @@ public class Element {
     private final char status; // 's' = solid, 'l' = liquid, 'g' = gas, 'u' = unknown
     private final boolean radioactive; // 0 = not radioactive, 1 = radioactive
     private final boolean natural; // 0 = fake element, 1 = natural element
-
+    private final String kind; // Alkalimetalls and such
     /**
      * Basic constructor for a normal element
      * @param name Name of Element
@@ -42,7 +42,7 @@ public class Element {
      * @param natural
      */
     public Element(String name, String symbol, byte orderNumber, float atomMass, float electroNegativity,
-                   float density, char status, boolean radioactive, boolean natural){
+                   float density, char status, boolean radioactive, boolean natural, String kind){
         this.name = name;
         this.symbol = symbol;
         this.orderNumber = orderNumber;
@@ -52,13 +52,9 @@ public class Element {
         this.kind = kind;
         this.natural = natural;
         this.radioactive = radioactive;
-    }
-    // TODO: remove this lol only for debugging
-    public Element (String name){
-        this.name = name,
+        this.status = status;
     }
 
-    private final String kind; // Alkalimetal and such
     public String getName() {
         return name;
     }
@@ -99,7 +95,7 @@ public class Element {
 
 
     public static void main(String[] args){
-        Element e = new Element("Wasserstoff");
+        Element e = new Element("Wasserstoff", "H", 1, 1,0, 1.5,'f', true, false, "Nat");
         System.out.println(e.getName());
     }
 }
